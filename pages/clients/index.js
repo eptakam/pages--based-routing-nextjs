@@ -12,7 +12,16 @@ export default function ClientsPage() {
       <ul>
         {clients.map((client) => (
           <li key={client.id}>
-            <Link href={`/clients/${client.id}`}>{client.name}</Link>
+            {/* <Link href={`/clients/${client.id}`}>{client.name}</Link> */}
+            {/* NextJs donne egalement la possibilite de passer un objet a l'atribut href de la balise Link au lieu d'une chaine de caractere. voir ci-dessous */}
+            <Link
+              href={{
+                pathname: "/clients/[id]",
+                query: { id: client.id },
+              }}
+            >
+              {client.name}
+            </Link>
           </li>
         ))}
       </ul>
